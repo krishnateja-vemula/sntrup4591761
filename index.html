@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script Runner</title>
+</head>
+<body>
+
+<button onclick="runAndDisplay()">Run Script</button>
+<pre id="output"></pre>
+
+<script>
+    function runAndDisplay() {
+        fetch('/runScript')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('output').innerText = data;
+            })
+            .catch(error => {
+                console.error('Error fetching script output:', error);
+            });
+    }
+</script>
+
+</body>
+</html>
+
